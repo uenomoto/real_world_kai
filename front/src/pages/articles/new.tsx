@@ -21,7 +21,7 @@ const CreateAricle = () => {
     setTitle(e.target.value);
   };
 
-  const handledescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value.length > 30) {
       alert("内容は30文字以内で入力してください");
       return;
@@ -35,7 +35,7 @@ const CreateAricle = () => {
 
   const handlSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // console.log(title, content);
+    // console.log(title, description);
 
     // バリデーション
     if (title === "" || description === "" || body === "") {
@@ -81,7 +81,7 @@ const CreateAricle = () => {
             id="description"
             className={styles.textarea}
             value={description}
-            onChange={handledescriptionChange}
+            onChange={handleDescriptionChange}
           />
           <label htmlFor="body" className={styles.label}>
             本文
