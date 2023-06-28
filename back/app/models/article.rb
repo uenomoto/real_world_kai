@@ -11,8 +11,8 @@ class Article < ApplicationRecord
   def to_json
     {
       **as_json({ except: %i[created_at updated_at] }),
-      createAt: created_at.strftime('%d/%m/%Y %H:%M:%S'),
-      updateAt: updated_at.strftime('%d/%m/%Y %H:%M:%S'),
+      createdAt: created_at.strftime('%Y/%m/%d %H:%M:%S'),
+      updatedAt: updated_at.strftime('%Y/%m/%d %H:%M:%S'),
     }
   end
 
