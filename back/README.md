@@ -1,24 +1,37 @@
-# README
+# まみむ memo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```ruby
+def to_json
+    {
+      **as_json(except: %i[created_at updated_at]),
+      createAt: created_at.strftime('%d/%m/%Y %H:%M:%S'),
+      updateAt: updated_at.strftime('%d/%m/%Y %H:%M:%S'),
+    }
+  end
+```
 
-Things you may want to cover:
+記事の投稿時間と更新時間を結果の json に含まれないそして createAt と updateAt というキーで追加され整形される
 
-* Ruby version
+## 2 つの表現は生成する JSON データの構造に違い
 
-* System dependencies
+### render json: { article: @article.to_json }
 
-* Configuration
+```ruby
+{
+  "article": {
+    # @articleの属性がここに入る
+  }
+}
+```
 
-* Database creation
+クライアントは article キーを通じてデータにアクセスする
 
-* Database initialization
+### render json: @article.to_json
 
-* How to run the test suite
+```ruby
+{
+  # @articleの属性がここに入る
+}
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+この場合、クライアントはデータに直接アクセスできる
