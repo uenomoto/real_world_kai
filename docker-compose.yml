@@ -1,0 +1,45 @@
+version: '3.8'
+
+volumes:
+  db_data:
+  bundle:
+  node_modules:
+
+services:
+  db:
+    container_name: postgres
+    image: postgres:14.6
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+  api:
+    container_name: rails_api
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    volumes:
+      - ./back:/real_world_api
+      - bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    tty: true
+    depends_on:
+      - db
+  front:
+    container_name: next_front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    command: sh -c "npm run dev"
+    volumes:
+      - ./front:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "8000:3000"
+    tty: true
+    depends_on:
+      - api
