@@ -7,22 +7,22 @@
 ```jsx
 [
 next_front  |   {
-next_front  |     id: 3,
-next_front  |     title: 'postman naretekita',
-next_front  |     description: 'API叩く',
-next_front  |     slug: 'postman-naretekita',
-next_front  |     body: '苦戦したがCRUD処理はなんとかできるようになってきた',
-next_front  |     created_at: '2023-06-28T13:43:48.434Z',
-next_front  |     updated_at: '2023-06-28T13:43:48.434Z'
+next_front  |     id: 6,
+next_front  |     title: 'test toukou desu',
+next_front  |     description: '腹へったんこぶ',
+next_front  |     slug: 'test-toukou-desu',
+next_front  |     body: 'なんか食べたいんこぶ',
+next_front  |     createdAt: '2023/06/29 01:31:29',
+next_front  |     updatedAt: '2023/06/29 01:31:29'
 next_front  |   },
 next_front  |   {
-next_front  |     id: 1,
-next_front  |     title: 'hensyu',
-next_front  |     description: 'Ever wonder how?',
-next_front  |     slug: 'hensyu',
-next_front  |     body: 'You have to believe',
-next_front  |     created_at: '2023-06-28T13:31:14.762Z',
-next_front  |     updated_at: '2023-06-28T13:51:40.356Z'
+next_front  |     id: 5,
+next_front  |     title: 'hajimeteno-toukou',
+next_front  |     description: 'Nextからの投稿！！',
+next_front  |     slug: 'hajimeteno-toukou',
+next_front  |     body: 'いっけえええええええええええええええ',
+next_front  |     createdAt: '2023/06/29 01:21:27',
+next_front  |     updatedAt: '2023/06/29 01:21:27'
 next_front  |   }
 next_front  | ]
 ```
@@ -49,23 +49,23 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 next_front  |   {
 next_front  |     articles: [
 next_front  |       {
-next_front  |         id: 3,
-next_front  |         title: 'postman naretekita',
-next_front  |         description: 'API叩く',
-next_front  |         slug: 'postman-naretekita',
-next_front  |         body: '苦戦したがCRUD処理はなんとかできるようになってきた',
-next_front  |         created_at: '2023-06-28T13:43:48.434Z',
-next_front  |         updated_at: '2023-06-28T13:43:48.434Z'
-next_front  |       },
-next_front  |       {
-next_front  |         id: 1,
-next_front  |         title: 'hensyu',
-next_front  |         description: 'Ever wonder how?',
-next_front  |         slug: 'hensyu',
-next_front  |         body: 'You have to believe',
-next_front  |         created_at: '2023-06-28T13:31:14.762Z',
-next_front  |         updated_at: '2023-06-28T13:51:40.356Z'
-next_front  |       }
+    next_front  |     id: 6,
+    next_front  |     title: 'test toukou desu',
+    next_front  |     description: '腹へったんこぶ',
+    next_front  |     slug: 'test-toukou-desu',
+    next_front  |     body: 'なんか食べたいんこぶ',
+    next_front  |     createdAt: '2023/06/29 01:31:29',
+    next_front  |     updatedAt: '2023/06/29 01:31:29'
+    next_front  |   },
+    next_front  |   {
+    next_front  |     id: 5,
+    next_front  |     title: 'hajimeteno-toukou',
+    next_front  |     description: 'Nextからの投稿！！',
+    next_front  |     slug: 'hajimeteno-toukou',
+    next_front  |     body: 'いっけえええええええええええええええ',
+    next_front  |     createdAt: '2023/06/29 01:21:27',
+    next_front  |     updatedAt: '2023/06/29 01:21:27'
+next_front  |      }
 next_front  |     ]
 next_front  |   }
 next_front  | ]

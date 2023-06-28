@@ -35,7 +35,7 @@ const CreateAricle = () => {
 
   const handlSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // console.log(title, description);
+    // console.log(title, description, body);
 
     // バリデーション
     if (title === "" || description === "" || body === "") {
