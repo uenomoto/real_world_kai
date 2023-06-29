@@ -3,7 +3,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def index
     @articles = Article.leatest
-    if @articles
+    if @articles.any?
       render json: { articles: @articles.map(&:to_json) }, status: :ok
     else
       render_not_found_response

@@ -1,11 +1,61 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
+import { Article } from "@/types";
+import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import { useState } from "react";
+// @ts-ignore
+import axios from "axios";
 
-const inter = Inter({ subsets: ["latin"] });
+type Props = {
+  articles: Article[];
+};
 
-export default function Home() {
+// ISRで記事一覧を取得する
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const res = await fetch("http://api:3000/api/v1");
+  const data = await res.json();
+  const articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
+
+  // レスポンスがない場合(getStaticPropsが取得したデータがないとき)は空の配列を返す
+  if (!data.articles) {
+    data.articles = [];
+  }
+
+  // console.log(data.articles);
+  return {
+    props: {
+      articles,
+    },
+    revalidate: 60 * 60, // 1時間ごとに再生成
+  };
+};
+
+export default function Home({ articles: initialArticles }: Props) {
+  const router = useRouter();
+
+  const handleUpdate = async (article: Article) => {
+    router.push(`/articles/edit/${article.slug}`);
+  };
+
+  // 遷移せずに記事削除する
+  const [articles, setArticles] = useState(initialArticles);
+
+  // 削除ボタンを押した時の処理
+  const handleDelete = async (article: Article) => {
+    if (confirm("削除しますか？")) {
+      try {
+        await axios.delete(
+          `http://192.168.2.108:3000/api/v1/articles/${article.slug}`
+        );
+        setArticles(articles.filter((a) => a.slug !== article.slug));
+      } catch (error) {
+        alert("削除に失敗しました");
+      }
+    }
+  };
+
   return (
     <>
       <Head>
@@ -14,7 +64,40 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>nextjsはかっこいいけど難しい</h1>
+      <div className={styles.container}>
+        <h1>記事一覧ページ</h1>
+        <Link href="/articles/new" className={styles.createButton}>
+          新規登録する
+        </Link>
+        {articles.length > 0 ? (
+          articles.map((article: Article) => (
+            <div key={article.id} className={styles.articleCard}>
+              <Link
+                href={`/articles/${article.slug}`}
+                className={styles.articleCardBox}
+              >
+                <h2>{article.title}</h2>
+              </Link>
+              <p>{article.description}</p>
+              <p className={styles.date}>{article.createdAt}</p>
+              <button
+                className={styles.editButton}
+                onClick={() => handleUpdate(article)}
+              >
+                Edit
+              </button>
+              <button
+                className={styles.deleteButton}
+                onClick={() => handleDelete(article)}
+              >
+                Delete
+              </button>
+            </div>
+          ))
+        ) : (
+          <h1>ただいま記事がありません</h1>
+        )}
+      </div>
     </>
   );
 }
