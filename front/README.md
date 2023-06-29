@@ -88,3 +88,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 ```
 
 こうすること！
+
+## 動的ルーティングの際の注意点
+
+作ってから途中で []の名前を変更すると二重に取得してパフォーマンスが悪くなるので注意

@@ -16,6 +16,7 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const res = await fetch("http://api:3000/api/v1");
   const data = await res.json();
+  const articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
 
   // レスポンスがない場合(getStaticPropsが取得したデータがないとき)は空の配列を返す
   if (!data.articles) {
@@ -25,7 +26,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   // console.log(data.articles);
   return {
     props: {
-      articles: data.articles, // レスポンスのdataをprops経由でページに渡す
+      articles,
     },
     revalidate: 60 * 60, // 1時間ごとに再生成
   };
@@ -35,7 +36,7 @@ export default function Home({ articles: initialArticles }: Props) {
   const router = useRouter();
 
   const handleUpdate = async (article: Article) => {
-    router.push(`/articles/${article.slug}/edit`);
+    router.push(`/articles/edit/${article.slug}`);
   };
 
   // 遷移せずに記事削除する
