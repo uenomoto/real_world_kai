@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent } from "react";
+import Head from "next/head";
 import React from "react";
 import styles from "../../../styles/Home.module.css";
 import Link from "next/link";
@@ -100,6 +101,9 @@ const EditAritcle = ({ article }: Props) => {
 
   return (
     <>
+      <Head>
+        <title>編集</title>
+      </Head>
       <div className={styles.container}>
         <h1 className={styles.title}>新規記事編集</h1>
         <form className={styles.form} onSubmit={handlSubmit}>
