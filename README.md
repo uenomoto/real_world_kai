@@ -6,6 +6,9 @@ DB に何も入っていないため取得した article のデータはあり�
 
 ### 現時点でのインフラ構成図
 
+![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/2416f4d4-7f3f-4c50-8ecc-b917b6e4f5cc)
+
+
 本当は nginx がいると思いますが僕にはまだ早かった学習不足です
 
 それと DB のマルチ AZ はコストすごく高いのであえてシングル AZ です。
