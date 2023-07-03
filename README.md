@@ -1,6 +1,6 @@
 ## real_wolrd で API の叩き方を復習
 
-https://workoutkeep.com/api/v1
+https://workoutkeep.com/api/v1/health_check
 
 DB に何も入っていないため取得した article のデータはありませんと 404 がレスポンスで帰ってくる
 
