@@ -69,7 +69,7 @@ Resources:
     Type: AWS::EC2::Subnet
     DependsOn: AttachGateway
     Properties:
-      AvailabilityZone: "ap-northeast-1a"
+      AvailabilityZone: "ap-northeast-1c"
       VpcId: !Ref VPC
       CidrBlock: !FindInMap [StackConfig, PublicSubnet2, CIDR]
       Tags:
