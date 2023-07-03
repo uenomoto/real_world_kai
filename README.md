@@ -2,7 +2,7 @@
 
 https://workoutkeep.com/api/v1/health_check
 
-DB に何も入っていないため取得した article のデータはありませんと 404 がレスポンスで帰ってくる
+ALBのヘルスチェックで必ず200okにしなくてはならないため専用のcontrollerとrouteを作成してエラー回避
 
 ### 現時点でのインフラ構成図
 
