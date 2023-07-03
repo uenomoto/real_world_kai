@@ -28,9 +28,9 @@ RUN bundle install
 # アプリケーションのコードを追加する
 ADD . $APP_HOME
 
-# エントリーポイントをコピー(開発環境用)
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+# 本番の時のエントリーポイントを本番用にECSのタスク作成で設定する
 ENTRYPOINT ["entrypoint.sh"]
 
 # 本番環境↓
