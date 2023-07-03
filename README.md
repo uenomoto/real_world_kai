@@ -6,7 +6,8 @@ ALBのヘルスチェックで必ず200okにしなくてはならないため専
 
 ### 現時点でのインフラ構成図
 
-![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/2416f4d4-7f3f-4c50-8ecc-b917b6e4f5cc)
+![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/4d22fc7c-ceab-402c-b072-862312fa7b3d)
+
 
 
 本当は nginx がいると思いますが僕にはまだ早かった学習不足です
