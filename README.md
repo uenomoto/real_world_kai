@@ -4,6 +4,10 @@ https://workoutkeep.com/api/v1/health_check
 
 ALBのヘルスチェックで必ず200okにしなくてはならないため専用のcontrollerとrouteを作成してエラー回避
 
+一覧取得
+
+https://workoutkeep.com/api/v1
+
 ### 現時点でのインフラ構成図
 
 ![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/c1ab4dae-b3b6-4f75-a71d-4e2dab0519e5)
