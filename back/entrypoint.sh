@@ -13,5 +13,3 @@ if [ "$RAILS_ENV" = "production" ]; then
 fi
 # dockerfileのCMDの引数を実行する
 exec "$@"
-
-# bashのインストールパスが異なる環境でも、スクリプトが正しく動作するようenvつける
