@@ -63,6 +63,10 @@ const EditAritcle = ({ article }: Props) => {
   const [body, setBody] = useState(article.body);
   const router = useRouter();
 
+  if (!article) {
+    return <div>記事が見つかりません。</div>;
+  }
+
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.match(/^[ぁ-んァ-ン一-龥]/)) {
       alert("タイトルは日本語では入力できません");

@@ -11,7 +11,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'localhost:8000'
     else
-      origins 'https://real-world-kai.vercel.app/'
+      origins 'real-world-kai.vercel.app'
     end
 
     resource "*",
