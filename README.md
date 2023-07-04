@@ -4,6 +4,8 @@ https://workoutkeep.com/api/v1/health_check
 
 ALBのヘルスチェックで必ず200okにしなくてはならないため専用のcontrollerとrouteを作成してエラー回避
 
+### Rails側
+
 一覧取得
 
 https://workoutkeep.com/api/v1
