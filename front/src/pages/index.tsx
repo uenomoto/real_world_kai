@@ -18,11 +18,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   // console.log(process.env.NEXT_IP_ENDPOINT);
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1`);
   const data = await res.json();
-  const articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
+  let articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
 
   // レスポンスがない場合(getStaticPropsが取得したデータがないとき)は空の配列を返す
   if (!articles) {
-    data.articles = [];
+    articles = [];
   }
 
   // console.log(data.articles);

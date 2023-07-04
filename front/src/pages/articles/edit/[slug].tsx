@@ -58,9 +58,9 @@ export const getStaticProps = async ({
 };
 
 const EditAritcle = ({ article }: Props) => {
-  const [title, setTitle] = useState(article.title);
-  const [description, setDescription] = useState(article.description);
-  const [body, setBody] = useState(article.body);
+  const [title, setTitle] = useState(article?.title || "");
+  const [description, setDescription] = useState(article?.description || "");
+  const [body, setBody] = useState(article?.body || "");
   const router = useRouter();
 
   if (!article) {
