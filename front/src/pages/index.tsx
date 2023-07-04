@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       articles,
     },
-    revalidate: 60 * 60, // 1時間ごとに再生成
+    revalidate: 5,
   };
 };
 
