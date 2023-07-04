@@ -5,6 +5,7 @@ import { Article } from "@/types";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
+// import { useApiEndpoint } from "../hooks/useApiEndpoint";
 // @ts-ignore
 import axios from "axios";
 
@@ -16,7 +17,8 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   // console.log(process.env.NEXT_PUBLIC_API_ENDPOINT); // しっかり環境変数が渡せているかチェック
   // console.log(process.env.NEXT_IP_ENDPOINT);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1`);
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1`);
   const data = await res.json();
   let articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
 
@@ -46,10 +48,6 @@ export default function Home({ articles: initialArticles }: Props) {
 
   // 削除ボタンを押した時の処理
   const handleDelete = async (article: Article) => {
-    console.log(
-      `${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1/articles/${article.slug}`
-    );
-    console.log("NEXT_IP_ENDPOINT:", process.env.NEXT_PUBLIC_IP_ENDPOINT);
     if (confirm("削除しますか？")) {
       try {
         await axios.delete(
