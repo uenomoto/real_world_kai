@@ -51,6 +51,7 @@ const CreateAricle = () => {
         body: body,
       });
       router.push("/");
+      alert("登録に成功しました");
     } catch (error) {
       alert("登録に失敗しました");
     }
