@@ -8,6 +8,22 @@ ALBのヘルスチェックで必ず200okにしなくてはならないため専
 
 https://workoutkeep.com/api/v1
 
+詳細取得
+
+https://workoutkeep.com/api/v1/articles/isr-is-got
+
+クリエイト
+
+POST /api/v1/articles
+
+編集
+
+PUT /api/v1/articles/:slug
+
+削除
+
+DELETE /api/v1/articles/:slug
+
 ### 現時点でのインフラ構成図
 
 ![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/c1ab4dae-b3b6-4f75-a71d-4e2dab0519e5)
