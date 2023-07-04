@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
 
   // レスポンスがない場合(getStaticPropsが取得したデータがないとき)は空の配列を返す
-  if (!data.articles) {
+  if (!articles) {
     data.articles = [];
   }
 

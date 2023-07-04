@@ -16,6 +16,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await res.json();
   const articles: Article[] = data.articles;
 
+  // articlesがundefinedの場合は空の配列を返すデプロイ時にエラーが出る
+  if (!articles) {
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
+
   const paths = articles.map((article: Article) => ({
     params: { slug: article.slug.toString() },
   }));
