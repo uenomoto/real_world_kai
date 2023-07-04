@@ -4,6 +4,7 @@ set -e
 # railsのpidファイルが残っている場合削除
 rm -f /real_world_api/tmp/pids/server.pid
 
+# 本番環境の時だけ行うようにする
 if [ "$RAILS_ENV" = "production" ]; then
   # 本番環境（AWS ECS）への初回デプロイ時に利用
   # 初回デプロイ後にコメントアウト
