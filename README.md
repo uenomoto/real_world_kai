@@ -24,6 +24,24 @@ PUT /api/v1/articles/:slug
 
 DELETE /api/v1/articles/:slug
 
+### Next.js側
+
+新規投稿
+
+https://pf-workoutmenu.com/articles/new
+
+一覧取得
+
+https://pf-workoutmenu.com
+
+詳細取得
+
+https://pf-workoutmenu.com/artcles/isr-is-got
+
+編集画面
+
+https://pf-workoutmenu.com/artcles/edit/isr-is-got
+
 ### 現時点でのインフラ構成図
 
 ![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/c1ab4dae-b3b6-4f75-a71d-4e2dab0519e5)
