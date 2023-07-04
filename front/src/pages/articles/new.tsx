@@ -45,7 +45,7 @@ const CreateAricle = () => {
 
     // axiosで記事を作成する
     try {
-      await axios.post("http://192.168.2.108:3000/api/v1/articles", {
+      await axios.post(`${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1/articles`, {
         title: title,
         description: description,
         body: body,

@@ -15,7 +15,7 @@ type Props = {
 
 // 記事を編集するためどの記事を編集するのかslugを取得する必要がある
 export const getStaticPaths = async () => {
-  const res = await fetch("http://api:3000/api/v1");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1`);
   const data = await res.json();
   const article: Article[] = data.articles;
 
@@ -35,7 +35,9 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string };
 }) => {
-  const res = await fetch(`http://api:3000/api/v1/articles/${params.slug}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1/articles/${params.slug}`
+  );
   const data = await res.json();
   const article: Article = data.article;
 
@@ -86,7 +88,7 @@ const EditAritcle = ({ article }: Props) => {
     // axiosで記事を編集する
     try {
       await axios.put(
-        `http://192.168.2.108:3000/api/v1/articles/${article.slug}`,
+        `${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1/articles/${article.slug}`,
         {
           title: title,
           description: description,

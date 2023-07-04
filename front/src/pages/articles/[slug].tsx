@@ -12,7 +12,7 @@ type Props = {
 // 記事の詳細ページ
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("http://api:3000/api/v1");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1`);
   const data = await res.json();
   const articles: Article[] = data.articles;
 
@@ -31,8 +31,13 @@ export const getStaticProps = async ({
 }: {
   params: { slug: string };
 }) => {
-  const res = await fetch(`http://api:3000/api/v1/articles/${params.slug}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1/articles/${params.slug}`
+  );
   const data = await res.json();
+
+  // console.log(data);
+
   const article: Article = data.article;
 
   // console.log(article);

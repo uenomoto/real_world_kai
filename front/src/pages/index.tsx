@@ -14,7 +14,9 @@ type Props = {
 
 // ISRで記事一覧を取得する
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await fetch("http://api:3000/api/v1");
+  // console.log(process.env.NEXT_PUBLIC_API_ENDPOINT); // しっかり環境変数が渡せているかチェック
+  // console.log(process.env.NEXT_IP_ENDPOINT);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/v1`);
   const data = await res.json();
   const articles: Article[] = data.articles; // レスポンスのdataをprops経由でページに渡す
 
@@ -44,10 +46,14 @@ export default function Home({ articles: initialArticles }: Props) {
 
   // 削除ボタンを押した時の処理
   const handleDelete = async (article: Article) => {
+    console.log(
+      `${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1/articles/${article.slug}`
+    );
+    console.log("NEXT_IP_ENDPOINT:", process.env.NEXT_PUBLIC_IP_ENDPOINT);
     if (confirm("削除しますか？")) {
       try {
         await axios.delete(
-          `http://192.168.2.108:3000/api/v1/articles/${article.slug}`
+          `${process.env.NEXT_PUBLIC_IP_ENDPOINT}/v1/articles/${article.slug}`
         );
         setArticles(articles.filter((a) => a.slug !== article.slug));
       } catch (error) {
