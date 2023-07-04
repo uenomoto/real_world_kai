@@ -2,9 +2,9 @@
 
 https://workoutkeep.com/api/v1/health_check
 
-ALBのヘルスチェックで必ず200okにしなくてはならないため専用のcontrollerとrouteを作成してエラー回避
+ALB のヘルスチェックで必ず 200ok にしなくてはならないため専用の controller と route を作成してエラー回避
 
-### Rails側
+### Rails 側
 
 一覧取得
 
@@ -26,7 +26,7 @@ PUT /api/v1/articles/:slug
 
 DELETE /api/v1/articles/:slug
 
-### Next.js側
+### Next.js 側
 
 新規投稿
 
@@ -47,10 +47,6 @@ https://pf-workoutmenu.com/artcles/edit/isr-is-got
 ### 現時点でのインフラ構成図
 
 ![AWSアーキテクチャ図](https://github.com/uenomoto/real_world_kai/assets/113354283/7514a9f2-471f-44c5-99cd-6a8385eed530)
-
-
-
-本当は nginx がいると思いますが僕にはまだ早かった学習不足です
 
 それと DB のマルチ AZ はコストすごく高いのであえてシングル AZ です。
 
