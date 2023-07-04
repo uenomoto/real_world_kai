@@ -7,7 +7,12 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "localhost:8000"
+    # 本番環境と開発環境で異なるオリジンを許可するための設定
+    if Rails.env.development?
+      origins 'localhost:8000'
+    else
+      origins 'pf-workoutmenu.com'
+    end
 
     resource "*",
       headers: :any,

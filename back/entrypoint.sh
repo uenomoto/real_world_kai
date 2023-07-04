@@ -4,10 +4,14 @@ set -e
 # railsのpidファイルが残っている場合削除
 rm -f /real_world_api/tmp/pids/server.pid
 
-# メインプロセスの前にデータベースマイグレーションを追加
-# bundle exec rails db:create RAILS_ENV=production DB作成は初回だけでいいのでコメントアウト
-bundle exec rails db:migrate RAILS_ENV=production
+# これは何をしている？
 
+if [ "$RAILS_ENV" = "production" ]; then
+  # 本番環境（AWS ECS）への初回デプロイ時に利用
+  # 初回デプロイ後にコメントアウト
+  bundle exec rails db:create
+  bundle exec rails db:migrate
+fi
 # dockerfileのCMDの引数を実行する
 exec "$@"
 
