@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 # モデルのテストを書く
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   describe 'バリデーション' do
     # タイトル、本文、デスクリプションがあれば有効な状態であること
-    it { should validate_presence_of(:title) }
-    it { should validate_uniqueness_of(:title) }
-    it { should validate_presence_of(:description) }
-    it { should validate_presence_of(:body) }
-    it { should validate_uniqueness_of(:slug)}
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_uniqueness_of(:title) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:body) }
+    it { is_expected.to validate_uniqueness_of(:slug) }
 
-    context 'タイトルが日本語の時' do
+    context 'when タイトルが日本語の時' do
       let(:article) { build(:article, title: 'あ') }
 
       it '無効であること' do
@@ -19,7 +21,7 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    context 'タイトルが英語の時' do
+    context 'when タイトルが英語の時' do
       let(:article) { build(:article, title: 'a') }
 
       it '有効であること' do
@@ -44,7 +46,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'スラッグがしっかりタイトルから変換されていること' do
-    context 'タイトルが存在するとき' do
+    context 'when タイトルが存在するとき' do
       let(:article) { build(:article, title: 'my article') }
 
       it 'スラッグがセットされること' do
@@ -53,7 +55,7 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    context 'タイトルが存在しないとき' do
+    context 'when タイトルが存在しないとき' do
       let(:article) { build(:article, title: nil) }
 
       it 'スラッグがセットされないこと' do

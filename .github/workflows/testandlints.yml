@@ -40,6 +40,7 @@ jobs:
       - name: Set up database schema
         run: |
           cd back
+          bin/rails db:environment:set RAILS_ENV=test
           bin/rails db:schema:load
       # ここにテストランナーを追加または置き換える
       - name: Run tests
