@@ -17,7 +17,7 @@ test:
 
 production:
   <<: *default
-  database: <%= Rails.application.credentials.production[:db][:database] %>
-  username: <%= Rails.application.credentials.production[:db][:username] %>
-  password: <%= Rails.application.credentials.production[:db][:password] %>
-  host: <%= Rails.application.credentials.production[:db][:host] %>
+  database: <%= ENV['PRODUCTION_DB_NAME'] %>
+  username: <%= ENV['PRODUCTION_DB_USER'] %>
+  password: <%= ENV['PRODUCTION_DB_PASSWORD'] %>
+  host: <%= ENV['PRODUCTION_DB_HOST'] %>
