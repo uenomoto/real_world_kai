@@ -236,7 +236,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  shoulda-matchers
+  shoulda-matchers (~> 5.0)
   tzinfo-data
 
 RUBY VERSION

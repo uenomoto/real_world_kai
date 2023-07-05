@@ -39,7 +39,7 @@ RSpec.describe Article, type: :model do
       expect(json).not_to have_key('updated_at')
     end
 
-    it 'フォーマットされた日付とreatedAtとupdatedAtであること' do
+    it 'フォーマットされた日付とcreatedAtとupdatedAtであること' do
       expect(json['createdAt']).to eq(article.created_at.strftime('%Y/%m/%d %H:%M:%S'))
       expect(json['updatedAt']).to eq(article.updated_at.strftime('%Y/%m/%d %H:%M:%S'))
     end
