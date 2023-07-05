@@ -5,6 +5,8 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   describe 'バリデーション' do
+    subject { create(:article) } # 事前にcreateでデータを作成しておく
+
     # タイトル、本文、デスクリプションがあれば有効な状態であること
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_uniqueness_of(:title) }
