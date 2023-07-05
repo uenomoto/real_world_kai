@@ -12,12 +12,12 @@ development:
 
 test:
   <<: *default
-  # urlに全ての情報が含まれるため、他の情報は不要になる
-  url: <%= Rails.application.credentials.db[:url] %>
+  # urlに全ての情報が含まれるため、他の情報は不要
+  url: <%= ENV['DATABASE_URL'] %>
 
 production:
   <<: *default
-  database: <%= Rails.application.credentials.production[:db][:database] %>
-  username: <%= Rails.application.credentials.production[:db][:username] %>
-  password: <%= Rails.application.credentials.production[:db][:password] %>
-  host: <%= Rails.application.credentials.production[:db][:host] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
