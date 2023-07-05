@@ -32,7 +32,7 @@ RSpec.describe Article, type: :model do
 
   describe 'to_jsonメソッドがしっかりできているか' do
     let(:article) { create(:article) }
-    let(:json) { aritcle.to_json }
+    let(:json) { article.to_json }
 
     it 'created_atとupdated_atを含まないこと' do
       expect(json).not_to have_key('created_at')
