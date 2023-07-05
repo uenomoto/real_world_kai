@@ -38,11 +38,11 @@ https://pf-workoutmenu.com
 
 詳細取得
 
-https://pf-workoutmenu.com/artcles/isr-is-got
+https://pf-workoutmenu.com/articles/isr-is-got
 
 編集画面
 
-https://pf-workoutmenu.com/artcles/edit/isr-is-got
+https://pf-workoutmenu.com/articles/edit/isr-is-got
 
 ### 現時点でのインフラ構成図
 
