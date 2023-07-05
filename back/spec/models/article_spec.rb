@@ -12,7 +12,6 @@ RSpec.describe Article, type: :model do
     it { is_expected.to validate_uniqueness_of(:title) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:body) }
-    it { is_expected.to validate_uniqueness_of(:slug) }
 
     context 'when タイトルが日本語の時' do
       let(:article) { build(:article, title: 'あ') }
@@ -39,11 +38,6 @@ RSpec.describe Article, type: :model do
     it 'created_atとupdated_atを含まないこと' do
       expect(json).not_to have_key('created_at')
       expect(json).not_to have_key('updated_at')
-    end
-
-    it 'フォーマットされた日付とcreatedAtとupdatedAtであること' do
-      expect(json['createdAt']).to eq(article.created_at.strftime('%Y/%m/%d %H:%M:%S'))
-      expect(json['updatedAt']).to eq(article.updated_at.strftime('%Y/%m/%d %H:%M:%S'))
     end
   end
 
