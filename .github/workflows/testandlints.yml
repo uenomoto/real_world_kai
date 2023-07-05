@@ -6,8 +6,6 @@
 # run tests and linters.
 name: "Test and Lint CI"
 on:
-  push:
-    branches: ["main"]
   pull_request:
     branches: ["main"]
 jobs:
