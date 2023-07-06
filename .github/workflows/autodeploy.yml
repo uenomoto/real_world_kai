@@ -1,0 +1,56 @@
+# name: Deploy to Rails ECS
+
+# on:
+#   push:
+#     branches: ["main"]
+
+# defaults:
+#   run:
+#     working-directory: back
+
+# permissions:
+#   id-token: write
+#   contents: read
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+
+#       - uses: aws-actions/configure-aws-credentials@v2
+#         with:
+#           role-to-assume: arn:aws:iam::511837944532:role/auto-deploy-role
+#           aws-region: ap-northeast-1
+
+#       - name: Login to Amazon ECR
+#         id: login-ecr
+#         uses: aws-actions/amazon-ecr-login@v1
+
+#       - name: Build tag and push image to Amazon ECR
+#         env:
+#           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }} # Amazon ECR レジストリの URI
+#           ECR_REPOSITORY: realecs # Amazon ECR リポジトリ名
+#           IMAGE_TAG: ${{ github.sha }} # GitHub コミット SHA からタグを作成
+#         run: |
+#           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+#           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+#       - name: Fill in the new image ID in the Amazon ECS task definition
+#         id: task-def
+#         uses: aws-actions/amazon-ecs-render-task-definition@v1
+#         with:
+#           task-definition: task-definition.json
+#           container-name: rails-api # ecsのタスク定義内のコンテナ名
+#           # ↓ 511837944532.dkr.ecr.ap-northeast-1.amazonaws.com/realecs:latest
+#           image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} # タスク定義内のコンテナのイメージ名
+
+#       - name: Deploy Amazon ECS task definition
+#         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#         with:
+#           task-definition: ${{ steps.task-def.outputs.task-definition }} # Contains the full task definition JSON
+#           service: real-world-service # ecsのサービス名
+#           cluster: real-world-cluster # ecsのクラスター名
+#           wait-for-service-stability: true # optional, waits for service stability before completing the action
