@@ -1,125 +1,87 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:511837944532:task-definition/rael_world:5",
-  "containerDefinitions": [
+    "containerDefinitions": [
       {
-          "name": "rails-api",
-          "image": "511837944532.dkr.ecr.ap-northeast-1.amazonaws.com/realecs",
-          "cpu": 0,
-          "portMappings": [
-              {
-                  "name": "rails-api-3000-tcp",
-                  "containerPort": 3000,
-                  "hostPort": 3000,
-                  "protocol": "tcp",
-                  "appProtocol": "http"
-              }
-          ],
-          "essential": true,
-          "entryPoint": [
-              "/usr/bin/entrypoint.sh"
-          ],
-          "command": [
-              "rails",
-              "server",
-              "-b",
-              "0.0.0.0",
-              "-e",
-              "production"
-          ],
-          "environment": [
-              {
-                  "name": "RAILS_ENV",
-                  "value": "production"
-              }
-            ],
-            "secrets": [
-              {
-                  "name": "DATABASE_USERNAME",
-                  "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_username"
-              },
-              {
-                  "name": "DATABASE_NAME",
-                  "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_name"
-              },
-              {
-                  "name": "RAILS_MASTER_KEY",
-                  "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/rails_master_key" 
-              },
-              {
-                  "name": "DATABASE_HOST",
-                  "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_host"
-              },
-              {
-                  "name": "DATABASE_PASSWORD",
-                  "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_password"
-              }
-            ],
-          "environmentFiles": [],
-          "mountPoints": [],
-          "volumesFrom": [],
-          "workingDirectory": "/real_world_api",
-          "ulimits": [],
-          "logConfiguration": {
-              "logDriver": "awslogs",
-              "options": {
-                  "awslogs-group": "/ecs/rael_world",
-                  "awslogs-region": "ap-northeast-1",
-                  "awslogs-stream-prefix": "ecs"
-              }
+        "name": "rails-api",
+        "image": "511837944532.dkr.ecr.ap-northeast-1.amazonaws.com/realecs",
+        "cpu": 0,
+        "portMappings": [
+          {
+            "name": "rails-api-3000-tcp",
+            "containerPort": 3000,
+            "hostPort": 3000,
+            "protocol": "tcp",
+            "appProtocol": "http"
           }
+        ],
+        "essential": true,
+        "entryPoint": [
+          "/usr/bin/entrypoint.sh"
+        ],
+        "command": [
+          "rails",
+          "server",
+          "-b",
+          "0.0.0.0",
+          "-e",
+          "production"
+        ],
+        "environment": [
+          {
+            "name": "RAILS_ENV",
+            "value": "production"
+          }
+        ],
+        "secrets": [
+          {
+            "name": "DATABASE_USERNAME",
+            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_username"
+          },
+          {
+            "name": "DATABASE_NAME",
+            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_name"
+          },
+          {
+            "name": "RAILS_MASTER_KEY",
+            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/rails_master_key" 
+          },
+          {
+            "name": "DATABASE_HOST",
+            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_host"
+          },
+          {
+            "name": "DATABASE_PASSWORD",
+            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_password"
+          }
+        ],
+        "environmentFiles": [],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "workingDirectory": "/real_world_api",
+        "ulimits": [],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/rael_world",
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        }
       }
-  ],
-  "family": "rael_world",
-  "taskRoleArn": "arn:aws:iam::511837944532:role/ecsTaskExecutionRole",
-  "executionRoleArn": "arn:aws:iam::511837944532:role/ecsTaskExecutionRole",
-  "networkMode": "awsvpc",
-  "revision": 5,
-  "volumes": [],
-  "status": "ACTIVE",
-  "requiresAttributes": [
-      {
-          "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-      },
-      {
-          "name": "ecs.capability.execution-role-awslogs"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.ecr-auth"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.task-iam-role"
-      },
-      {
-          "name": "ecs.capability.execution-role-ecr-pull"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-      },
-      {
-          "name": "ecs.capability.task-eni"
-      }
-  ],
-  "placementConstraints": [],
-  "compatibilities": [
-      "EC2",
+    ],
+    "family": "rael_world",
+    "taskRoleArn": "arn:aws:iam::511837944532:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::511837944532:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
       "FARGATE"
-  ],
-  "requiresCompatibilities": [
-      "FARGATE"
-  ],
-  "cpu": "256",
-  "memory": "512",
-  "runtimePlatform": {
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "runtimePlatform": {
       "cpuArchitecture": "X86_64",
       "operatingSystemFamily": "LINUX"
-  },
-  "registeredAt": "2023-07-06T10:38:06.092Z",
-  "registeredBy": "arn:aws:iam::511837944532:user/iam_ueno",
-  "tags": []
-}
+    },
+    "tags": []
+  }
