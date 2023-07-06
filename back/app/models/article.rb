@@ -25,6 +25,7 @@ class Article < ApplicationRecord
   end
 
   scope :leatest, -> { order(created_at: :desc) }
+  scope :olest, -> { order(created_at: :asc) }
 
   private
 
