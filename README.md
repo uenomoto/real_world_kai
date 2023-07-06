@@ -1,4 +1,4 @@
-## Git Hub Actionsが最新の状態で成功しているか失敗しているかすぐ確認できる
+### Git Hub Actionsが最新の状態で成功しているか失敗しているかすぐ確認できる
 
 [![Test and Lint CI](https://github.com/uenomoto/real_world_kai/actions/workflows/testandlints.yml/badge.svg)](https://github.com/uenomoto/real_world_kai/actions/workflows/testandlints.yml)
 
