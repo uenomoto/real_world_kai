@@ -1,57 +1,57 @@
 {
     "containerDefinitions": [
-      {
+    {
         "name": "rails-api",
         "image": "511837944532.dkr.ecr.ap-northeast-1.amazonaws.com/realecs",
         "cpu": 0,
         "portMappings": [
-          {
+        {
             "name": "rails-api-3000-tcp",
             "containerPort": 3000,
             "hostPort": 3000,
             "protocol": "tcp",
             "appProtocol": "http"
-          }
+        }
         ],
         "essential": true,
         "entryPoint": [
-          "/usr/bin/entrypoint.sh"
+        "/usr/bin/entrypoint.sh"
         ],
         "command": [
-          "rails",
-          "server",
-          "-b",
-          "0.0.0.0",
-          "-e",
-          "production"
+        "rails",
+        "server",
+        "-b",
+        "0.0.0.0",
+        "-e",
+        "production"
         ],
         "environment": [
-          {
+        {
             "name": "RAILS_ENV",
             "value": "production"
-          }
+        }
         ],
         "secrets": [
-          {
-            "name": "DATABASE_USERNAME",
-            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_username"
-          },
-          {
-            "name": "DATABASE_NAME",
-            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_name"
-          },
-          {
-            "name": "RAILS_MASTER_KEY",
-            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/rails_master_key" 
-          },
-          {
-            "name": "DATABASE_HOST",
-            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_host"
-          },
-          {
-            "name": "DATABASE_PASSWORD",
-            "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/database_password"
-          }
+            {
+                "name": "DATABASE_HOST",
+                "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/myapp/database/host"
+            },
+            {
+                "name": "DATABASE_USERNAME",
+                "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/myapp/database/username"
+            },
+            {
+                "name": "DATABASE_PASSWORD",
+                "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/myapp/database/password"
+            },
+            {
+                "name": "DATABASE_NAME",
+                "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/myapp/database/name"
+            },
+            {
+                "name": "RAILS_MASTER_KEY",
+                "valueFrom": "arn:aws:ssm:ap-northeast-1:511837944532:parameter/myapp/database/key"
+            }
         ],
         "environmentFiles": [],
         "mountPoints": [],
@@ -59,14 +59,14 @@
         "workingDirectory": "/real_world_api",
         "ulimits": [],
         "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": {
+        "logDriver": "awslogs",
+        "options": {
             "awslogs-group": "/ecs/rael_world",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "ecs"
-          }
         }
-      }
+        }
+    }
     ],
     "family": "rael_world",
     "taskRoleArn": "arn:aws:iam::511837944532:role/ecsTaskExecutionRole",
@@ -75,13 +75,13 @@
     "volumes": [],
     "placementConstraints": [],
     "requiresCompatibilities": [
-      "FARGATE"
+    "FARGATE"
     ],
     "cpu": "256",
     "memory": "512",
     "runtimePlatform": {
-      "cpuArchitecture": "X86_64",
-      "operatingSystemFamily": "LINUX"
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
     },
     "tags": []
-  }
+}
