@@ -2,6 +2,8 @@
 
 [![Test and Lint CI](https://github.com/uenomoto/real_world_kai/actions/workflows/testandlints.yml/badge.svg)](https://github.com/uenomoto/real_world_kai/actions/workflows/testandlints.yml)
 
+[![Deploy to Rails ECS](https://github.com/uenomoto/real_world_kai/actions/workflows/autodeploy.yml/badge.svg)](https://github.com/uenomoto/real_world_kai/actions/workflows/autodeploy.yml)
+
 ## real_wolrd で API の叩き方を復習
 
 https://workoutkeep.com/api/v1/health_check
