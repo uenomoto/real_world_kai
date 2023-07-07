@@ -26,10 +26,7 @@ RUN bundle install
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-# 本番の時のエントリーポイントを本番用にECSのタスク作成で設定する
 ENTRYPOINT ["entrypoint.sh"]
 
 # 開発環境用↓
 CMD ["rails", "server", "-b", "0.0.0.0", "-e", "development"]
-
-# 本番環境の初期コマンドはECSのタスク作成で設定する

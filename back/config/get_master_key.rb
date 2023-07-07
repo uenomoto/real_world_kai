@@ -12,8 +12,9 @@ ENV['RAILS_MASTER_KEY'] = resp.parameter.value
   ENV["DATABASE_#{key.upcase}"] = resp.parameter.value
 end
 
-puts "Retrieved key: #{ENV['RAILS_MASTER_KEY']}"
-puts "DB:#{ENV['DATABASE_HOST']}"
-puts "DB:#{ENV['DATABASE_NAME']}"
-puts "DB:#{ENV['DATABASE_PASSWORD']}"
-puts "DB:#{ENV['DATABASE_USERNAME']}"
+# これでデバックできる
+# puts "Retrieved key: #{ENV['RAILS_MASTER_KEY']}"
+# puts "DB:#{ENV['DATABASE_HOST']}"
+# puts "DB:#{ENV['DATABASE_NAME']}"
+# puts "DB:#{ENV['DATABASE_PASSWORD']}"
+# puts "DB:#{ENV['DATABASE_USERNAME']}"
