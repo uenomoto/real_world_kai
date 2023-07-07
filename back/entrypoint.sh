@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# get the master key from SSM parameter store
+ruby config/get_master_key.rb
+
 # railsのpidファイルが残っている場合削除
 rm -f /real_world_api/tmp/pids/server.pid
 
