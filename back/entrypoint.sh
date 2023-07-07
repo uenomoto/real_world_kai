@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# get the master key from SSM parameter store
+# get the master key from SSM parameter store, 開発の時はコメントアウト
 ruby config/get_master_key.rb
 
 # railsのpidファイルが残っている場合削除
