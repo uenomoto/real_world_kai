@@ -19,7 +19,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::511837944532:role/auto-deploy-role
+          role-to-assume: arn:aws:iam::511837944532:role/ecs-deploy-role
           aws-region: ap-northeast-1
 
       - name: Login to Amazon ECR
