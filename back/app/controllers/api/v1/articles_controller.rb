@@ -6,7 +6,7 @@ module Api
       before_action :set_article, only: %i[show update destroy]
 
       def index
-        @articles = Article.olest
+        @articles = Article.leatest
         if @articles.any?
           render json: { articles: @articles.map(&:to_json) }, status: :ok
         else
