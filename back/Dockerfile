@@ -28,5 +28,4 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
-# 開発環境用↓
 CMD ["rails", "server", "-b", "0.0.0.0", "-e", "development"]

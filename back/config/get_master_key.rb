@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws-sdk-ssm'
 
 ssm = Aws::SSM::Client.new(region: 'ap-northeast-1')
@@ -6,7 +8,7 @@ ssm = Aws::SSM::Client.new(region: 'ap-northeast-1')
 resp = ssm.get_parameter(name: '/myapp/database/key', with_decryption: true)
 ENV['RAILS_MASTER_KEY'] = resp.parameter.value
 
-#　DB情報取得
+# 　DB情報取得
 %w[host username password name].each do |key|
   resp = ssm.get_parameter(name: "/myapp/database/#{key}", with_decryption: true)
   ENV["DATABASE_#{key.upcase}"] = resp.parameter.value
