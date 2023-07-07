@@ -50,13 +50,13 @@ module RealWorldApi
 
     config.time_zone = 'Asia/Tokyo'
 
-    config.before_initialize do
-      ssm = Aws::SSM::Client.new(region: 'ap-northeast-1')
+    # config.before_initialize do
+    #   ssm = Aws::SSM::Client.new(region: 'ap-northeast-1')
 
-      %w[host username password name].each do |key|
-        resp = ssm.get_parameter(name: "/myapp/database/#{key}", with_decryption: true)
-        Rails.application.credentials.config[("db_#{key}").to_sym] = resp.parameter.value
-      end
-    end
+    #   %w[host username password name].each do |key|
+    #     resp = ssm.get_parameter(name: "/myapp/database/#{key}", with_decryption: true)
+    #     Rails.application.credentials.config[("db_#{key}").to_sym] = resp.parameter.value
+    #   end
+    # end
   end
 end
